@@ -5,3 +5,16 @@ services:
     context: .
    ports:
     - 80:80
+
+  unit-test:
+    volumes:
+        - $PWD:/app
+    build:
+      dockerfile: rspec.dockerfile
+      context: .
+    entrypoint: rspec
+    command:
+      - /app/spec/unit/*_spec.rb
+      - --pattern
+    
+    
